@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head><title>Base de Datos de Enlaces</title></head>
+<body>
+    <h1>Enlaces Registrados</h1>
+    <table border="1">
+        <tr><th>URL</th><th>Riesgo</th><th>Motivo</th></tr>
+        {% for url, riesgo, motivo in enlaces %}
+        <tr>
+            <td>{{ url }}</td>
+            <td>{{ riesgo }}</td>
+            <td>{{ motivo }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Volver</a>
+</body>
+</html>

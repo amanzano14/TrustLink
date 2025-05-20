@@ -1,13 +1,37 @@
 <!DOCTYPE html>
 <html>
-<head><title>TrustLink - Inicio</title></head>
+<head>
+    <title>TrustLink - Inicio</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+        }
+        .container {
+            text-align: center;
+            padding: 20px;
+        }
+        input, button {
+            margin: 10px;
+        }
+        a {
+            margin: 0 10px;
+        }
+    </style>
+</head>
 <body>
-    <h1>Bienvenido a TrustLink</h1>
-    <form action="/analizar" method="post">
-        <input type="text" name="url" placeholder="Ingresa el enlace" required>
-        <button type="submit">Analizar</button>
-    </form>
-    <a href="/reportar">Reportar Enlace</a> |
-    <a href="/consultar">Consultar Enlaces</a>
+    <div class="container">
+        <h1>TrustLink</h1>
+        <form action="/analizar" method="post">
+            <input type="text" name="url" placeholder="Ingresa el enlace" required>
+            <button type="submit">Analizar</button>
+        </form>
+        <a href="/reportar">Reportar Enlace</a> |
+        <a href="/consultar">Consultar Enlaces</a>
+    </div>
 </body>
 </html>

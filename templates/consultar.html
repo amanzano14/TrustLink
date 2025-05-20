@@ -1,18 +1,76 @@
 <!DOCTYPE html>
-<html>
-<head><title>Base de Datos de Enlaces</title></head>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Enlaces Reportados</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 40px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 80%;
+        }
+        th, td {
+            border: 1px solid #ccc;
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .btn-delete {
+            background-color: #e74c3c;
+            color: white;
+            border: none;
+            padding: 6px 12px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-delete:hover {
+            background-color: #c0392b;
+        }
+    </style>
+</head>
 <body>
-    <h1>Enlaces Registrados</h1>
-    <table border="1">
-        <tr><th>URL</th><th>Riesgo</th><th>Motivo</th></tr>
-        {% for url, riesgo, motivo in enlaces %}
-        <tr>
-            <td>{{ url }}</td>
-            <td>{{ riesgo }}</td>
-            <td>{{ motivo }}</td>
-        </tr>
-        {% endfor %}
+    <h1>Enlaces Reportados</h1>
+    
+    <table>
+        <thead>
+            <tr>
+                <th>Enlace</th>
+                <th>Riesgo</th>
+                <th>Motivo</th>
+                <th>Acción</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for enlace in enlaces %}
+            <tr>
+                <td>{{ enlace[0] }}</td>
+                <td>{{ enlace[1] }}</td>
+                <td>{{ enlace[2] }}</td>
+                <td>{{ enlace[3] }}</td>
+                <td>
+                    <form action="/eliminar/{{ enlace[0] }}" method="post" onsubmit="return confirm('¿Estás seguro de que deseas eliminar este enlace?');">
+                        <button class="btn-delete" type="submit">Eliminar</button>
+                    </form>
+                </td>
+            </tr>
+            {% else %}
+            <tr>
+                <td colspan="4" style="text-align: center;">No hay enlaces reportados.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
     </table>
-    <a href="/">Volver</a>
 </body>
 </html>

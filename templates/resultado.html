@@ -1,11 +1,36 @@
 <!DOCTYPE html>
 <html>
-<head><title>Resultado del Análisis</title></head>
-<body>
+  <head>
+    <title>Resultado del Análisis</title>
+    <style>
+      .alert {
+        padding: 1em;
+        margin: 1em 0;
+        border-radius: 5px;
+        color: white;
+        font-weight: bold;
+      }
+      .seguro {
+        background-color: green;
+      }
+      .sospechoso {
+        background-color: orange;
+      }
+      .peligroso {
+        background-color: red;
+      }
+    </style>
+  </head>
+  <body>
     <h1>Resultado del Enlace Analizado</h1>
+
+    <div
+      class="alert {% if riesgo == 'Seguro' %}seguro{% elif riesgo == 'Sospechoso' %}sospechoso{% else %}peligroso{% endif %}"
+    >
+      {{ riesgo }}: {{ motivo }}
+    </div>
+
     <p><strong>Enlace:</strong> {{ url }}</p>
-    <p><strong>Riesgo:</strong> {{ riesgo }}</p>
-    <p><strong>Motivo:</strong> {{ motivo }}</p>
     <a href="/">Volver</a>
-</body>
+  </body>
 </html>
